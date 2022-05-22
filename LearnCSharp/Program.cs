@@ -37,7 +37,6 @@ namespace LearnCSharp
             // DATA TYPES AND VARIABLES
 
             // Integers
-
             int evenNumber = 22;
             int oddNumber = 45;
             Console.WriteLine(evenNumber + oddNumber); // Prints 67
@@ -45,7 +44,6 @@ namespace LearnCSharp
             Console.WriteLine("----------------------------------------------------------------------------------------------");
 
             // information about a dog
-
             string name = "Shadow";
             string breed = "Golden Retriever";
             int age = 5;
@@ -57,8 +55,8 @@ namespace LearnCSharp
             Console.WriteLine(weight);
             Console.WriteLine(spayed);
             Console.WriteLine("----------------------------------------------------------------------------------------------");
+            
             // Convert string to integer
-
             Console.WriteLine("Enter your favorite number!: ");
             int faveNumber = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine(faveNumber);
@@ -328,7 +326,6 @@ namespace LearnCSharp
             Console.WriteLine("----------------------------------------------------------------------------------------------");
 
             // using of ELSE statement
-
             int people = 12;
             string weather = "bad";
             if (people <= 10 && weather == "nice")
@@ -430,13 +427,41 @@ namespace LearnCSharp
             NamePets(a, b, c);
             Console.WriteLine("----------------------------------------------------------------------------------------------");
 
+            // DecoratePlanet() example of method
+            string x = DecoratePlanet("Jupiter");
+            Console.WriteLine(x);
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
+            // Int32.TryParse(string s,out int result)
+            string ageAsString = "102";
+            string nameAsString = "Granny";
+            int ageAsInt;
+            bool outcome;
+            outcome = Int32.TryParse(ageAsString, out ageAsInt);
+            Console.WriteLine(outcome);
+            Console.WriteLine(ageAsInt);
+            int nameAsInt;
+            bool outcome2;
+            outcome2 = Int32.TryParse(nameAsString, out nameAsInt);
+            Console.WriteLine(outcome2);
+            Console.WriteLine(nameAsInt);
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
+            // method: whisper
+            bool shit;
+            Console.WriteLine(Whisper("GARRRRR", out shit));
+            Console.WriteLine(shit);
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
             // to keep console open
             Console.ReadLine();
         }
+        // My First Method
         static void VisitPlanets(int numberOfPlanets = 0, string name = "Tugrul")
         {
             Console.WriteLine($"Welcome {name}! You visited {numberOfPlanets} new planets…");
         }
+        // My Second Method with OVERLOADS
         static void NamePets(string a, string b)
         {
             Console.WriteLine($"Your pets {a} and {b} will be joining your voyage across space!");
@@ -448,6 +473,18 @@ namespace LearnCSharp
         static void NamePets()
         {
             Console.WriteLine("Aw, you have no spacefaring pets :(");
+        }
+        // DecoratePlanet() example of method
+        static string DecoratePlanet(string a)
+        {
+            return $"*.*.* Welcome to {a} *.*.*";
+        }
+        // method: whisper
+        static string Whisper(string s, out bool b)
+        {
+            b = true;
+            s = s.ToLower();
+            return s;
         }
     }
 }
