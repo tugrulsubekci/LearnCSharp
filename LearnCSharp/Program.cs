@@ -8,6 +8,11 @@ namespace LearnCSharp
 {
     internal class Program
     {
+        // method as arguments
+        public static bool IsLong(string word)
+        {
+            return word.Length > 8;
+        }
         static void Main(string[] args)
         {
             // See https://aka.ms/new-console-template for more information
@@ -453,8 +458,155 @@ namespace LearnCSharp
             Console.WriteLine(shit);
             Console.WriteLine("----------------------------------------------------------------------------------------------");
 
+            //Expression-bodied definitions are method definitions with one expression.
+            Welcome("Earth");
+            double days = 500;
+            double rotations = DaysToRotations(days);
+            Console.WriteLine($"In {days} days, the Earth has rotated {rotations} time(s).");
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
+            // METHODS AS ARGUMENTS
+
+            // Array to be used as first argument
+            string[] adjectives = { "rocky", "mountainous", "cosmic", "extraterrestrial" };
+
+            // Call Array.Find() and 
+            // Pass in the array and method as arguments
+            string firstLongAdjective = Array.Find(adjectives, IsLong);
+
+            Console.WriteLine($"The first long word is: {firstLongAdjective}.");
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
+            /* Lambda Expressions
+            int[] numbers = {1, 3, 5, 6, 7, 8};
+            public static bool IsEven(int num)
+            {
+                return num % 2 == 0;
+            }
+            bool hasEvenNumber = Array.Exists(numbers, IsEven);
+            */
+            int[] numbers = { 1, 3, 5, 6, 7, 8 };
+            bool hasEvenNumber = Array.Exists(numbers, (int num) => num % 2 == 0);
+            Console.WriteLine(hasEvenNumber);
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
+            //Shorter Lambda Expressions (num has to be int because of modulo operator)
+            bool hasEvenNumbers = Array.Exists(numbers, (num) => num % 2 == 0);
+            // it can be shorter than this. we don’t need the parentheses around the parameter
+            bool hasEvenNum = Array.Exists(numbers, num => num % 2 == 0);
+
+            // BUILDING ARRAYS
+
+            string[] summerStrut;
+            summerStrut = new string[] { "Juice", "Missing U", "Raspberry Beret", "New York Groove", "Make Me Feel", "Rebel Rebel", "Despacito", "Los Angeles" };
+
+            int[] ratings = { 5, 4, 4, 3, 3, 5, 5, 4 };
+
+            // Array Length
+            if (summerStrut.Length == 8)
+            {
+                Console.WriteLine("summerStrut Playlist is ready to go!");
+            }
+            else if (summerStrut.Length > 8)
+            {
+                Console.WriteLine("Too many songs!");
+            }
+            else
+            {
+                Console.WriteLine("Add some songs!");
+            }
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
+            // Accessing Array Items
+            Console.WriteLine($"You rated the song {summerStrut[1]} {ratings[1]} stars ");
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
+            // Editing arrays
+            summerStrut[7] = "I like it";
+            ratings[7] = 5;
+
+            // We can initialize an array that has a length of three without specifying what those values are
+            int[] xyz = new int[6];
+            xyz[3] = 150;
+            Console.WriteLine($"{xyz[0]},{xyz[1]},{xyz[2]},{xyz[3]},{xyz[4]},{xyz[5]}");
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
+            // Array.IndexOf()
+            int threeStar = Array.IndexOf(ratings, 3);
+            Console.WriteLine($"Song number {threeStar + 1} is rated three stars");
+
+            // Array.Find()
+            string more10 = Array.Find(summerStrut, nm => nm.Length > 10);
+            Console.WriteLine($"The first song that has more than 10 characters in the title is {more10}.");
+
+            // Array.Sort()
+            Array.Sort(summerStrut);
+            Console.WriteLine($"first song: {summerStrut[0]} and last song: {summerStrut[7]}");
+
+            // Array.Reverse()
+            Array.Reverse(summerStrut);
+            Console.WriteLine($"first song: {summerStrut[0]} and last song: {summerStrut[7]}");
+            
+            // Array.Clear()
+            Array.Clear(summerStrut, 0, ratings.Length);
+            Console.WriteLine(ratings[0]);
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
+            // LOOPS
+
+            // While Loop
+            int emails = 6;
+            while (emails > 0)
+            {
+                emails--;
+                Console.WriteLine($"Deleting an email... and there are left {emails} email.");
+            }
+            Console.WriteLine("INBOX ZERO ACHIEVED!");
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
+            // Do..While Loops (Pomodoro application)
+            bool buttonClick = true;
+
+            do
+            {
+                Console.WriteLine("BLARRRRRRRRR");
+            } while (!buttonClick);
+
+            Console.WriteLine("Time for a five minute break.");
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
+            // for loops
+            for (int i = 1; i < 3; i++)
+            {
+                CreateTemplate(i);
+            }
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
+            // foreach loops
+            string[] todo = { "respond to email", "make wireframe", "program feature", "fix bugs" };
+            foreach (string note in todo)
+            {
+                CreateTodoItem(note);
+            }
+
+            // Pomodoro application
+            bool buttonC = true;
+            int count = 0;
+
+            do
+            {
+                Console.WriteLine("BLARRRRR");
+                count++;
+                if (count == 3)
+                {
+                    break;
+                }
+
+            } while (buttonC);
+
             // to keep console open
             Console.ReadLine();
+            
         }
         // My First Method
         static void VisitPlanets(int numberOfPlanets = 0, string name = "Tugrul")
@@ -486,5 +638,28 @@ namespace LearnCSharp
             s = s.ToLower();
             return s;
         }
+        static void CreateTemplate(int week)
+        {
+            Console.WriteLine($"Week {week}");
+            Console.WriteLine("Announcements: \n \n \n ");
+            Console.WriteLine("Report Backs: \n \n \n");
+            Console.WriteLine("Discussion Items: \n \n \n");
+        }
+        // foreach loop
+        static void CreateTodoItem(string item)
+        {
+            Console.WriteLine($"[] {item}");
+        }
+
+        /* Expression-bodied definitions are method definitions with one expression. 
+         * bool IsEven(int num)
+         * {
+         * return num % 2 == 0;
+         * }
+         */
+        static bool isEven(int num) => num % 2 == 0;
+        static void Welcome(string planet) => Console.WriteLine($"Welcome to {planet}!");
+        static double DaysToRotations(double days) => days / 365;
     }
+
 }
