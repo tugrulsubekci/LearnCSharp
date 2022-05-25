@@ -588,6 +588,7 @@ namespace LearnCSharp
             {
                 CreateTodoItem(note);
             }
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
 
             // Pomodoro application
             bool buttonC = true;
@@ -603,6 +604,55 @@ namespace LearnCSharp
                 }
 
             } while (buttonC);
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
+            // CLASSES AND OBJECTS
+
+            // Creating a book
+            Book book1 = new Book();
+
+            book1.title = "Bozkurt";
+            book1.author = "Armstrong";
+            book1.pages = 600;
+
+            Console.WriteLine($"title: {book1.title}\nauthor: {book1.author}\npages: {book1.pages}");
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+            // Constructors
+            Book book2 = new Book("Harry Potter", "JK Rowling", 400);
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
+            // Object Methods
+            Student student1 = new Student("tugrul", "engineer", 3.2);
+            Student student2 = new Student("ahsen", "engineer", 3.6);
+
+            Console.WriteLine(student1.HasHonors());
+            Console.WriteLine(student2.HasHonors());
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
+            // Getters and Setters
+            Movie movie1 = new Movie("The Avengers", "Joss Whedon", "PG-13");
+            Movie movie2 = new Movie("Shrek", "Adam Adamson", "PG");
+            // G, PG, PG-13, R,NR
+            Console.WriteLine(movie1.Rating);
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
+            // Methon in Classes
+            Forest Amazon = new Forest("Amazon", "Tropical");
+            Console.WriteLine(Amazon.Trees);
+            Amazon.Grow();
+            Console.WriteLine(Amazon.Trees);
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
+            // Number of forests created:
+            Console.WriteLine(Forest.ForestsCreated);
+            Forest forest1 = new Forest("Amazon", "Tropical");
+            Forest forest2 = new Forest("Eben", "Tropical");
+            Console.WriteLine(Forest.ForestsCreated);
+
+            // Example of SpaceInvader
+            SpaceInvader.Beep();
+            SpaceInvader enemy = new SpaceInvader();
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
 
             // to keep console open
             Console.ReadLine();
