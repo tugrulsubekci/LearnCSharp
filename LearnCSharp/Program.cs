@@ -654,6 +654,23 @@ namespace LearnCSharp
             SpaceInvader enemy = new SpaceInvader();
             Console.WriteLine("----------------------------------------------------------------------------------------------");
 
+            // INTERFACES
+
+            // Example of IAutomobile.cs
+
+            Sedan sedan1 = new Sedan(60);
+            Sedan sedan2 = new Sedan(70);
+            Truck truck1 = new Truck(45, 500);
+
+            sedan1.SpeedUp();
+            sedan2.SpeedUp();
+            truck1.SpeedUp();
+
+            Console.WriteLine($"Speed: {sedan1.Speed}\nWheels: {sedan1.Wheels}\nLicense Plate: {sedan1.LicensePlate}\n");
+            Console.WriteLine($"Speed: {sedan2.Speed}\nWheels: {sedan2.Wheels}\nLicense Plate: {sedan2.LicensePlate}\n");
+            Console.WriteLine($"Speed: {truck1.Speed}\nWheels: {truck1.Wheels}\nLicense Plate: {truck1.LicensePlate}\n");
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
             // to keep console open
             Console.ReadLine();
             
